@@ -73,31 +73,34 @@ East US
 # Architecture
 
 The current environment consists of:
-
-                Microsoft Azure
-
-                      |
-                      |
-
-          Windows Server 2022 VM
-
-                      |
-    ---------------------------------
-
-    Active Directory Domain Services
-                  |
-                  |
-    -----------------------------
-    |             |             |
-    DNS          DHCP          IIS
-                  |
-
-           lab.local Domain
-
-                  |
-
-      Users / Groups / Computers
-    
+```
+                       Microsoft Azure
+                              |
+                              |
+                    Azure Resource Group
+                              |
+                              |
+                 Windows Server 2022 VM
+                    (Domain Controller)
+                              |
+        ------------------------------------------------
+        |                     |                        |
+        |                     |                        | 
+ Active Directory            DNS                    DHCP
+ Domain Services          Server Role             Server Role
+        |
+        |
+      lab.local
+        |
+        |
+ --------------------------------------------------
+ |                    |                            |
+Users              Groups                    Computers
+1000+ Accounts     Permissions              Domain Joined
+                    |
+                    |
+             Access Control / IAM
+```
 ---
 
 # Implemented Components
